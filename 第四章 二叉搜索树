@@ -10,7 +10,7 @@ typedef struct TreeNode           		//记录类型
 } *BSTree,*Position;
 int InsertBST(BSTree &T, KeyType K)
 {
-	if (T == NULL)						//原树为空, 新插入的记录为根结点
+	if (T == NULL)				//原树为空, 新插入的记录为根结点
 	{
 		T = (TreeNode*)malloc(sizeof(TreeNode));
 		T->Key = K;
@@ -25,19 +25,19 @@ int InsertBST(BSTree &T, KeyType K)
 		return InsertBST(T->Rchild, K);  //插入到T的右子树中
 }
 
-void DispBST(BSTree T)		//输出一棵排序二叉树
+void DispBST(BSTree T)		                 //输出一棵排序二叉树
 {
 	if (T != NULL)
 	{
 		printf("%d", T->Key);
 		if (T->Lchild != NULL || T->Rchild != NULL)
 		{
-			printf("(");						//有孩子结点时才输出(
+			printf("(");					//有孩子结点时才输出(
 			DispBST(T->Lchild);				//递归处理左子树
 			if (T->Rchild != NULL)
 				printf(",");	//有右孩子结点时才输出,
 			DispBST(T->Rchild);				//递归处理右子树
-			printf(")");						//有孩子结点时才输出)
+			printf(")");					//有孩子结点时才输出)
 		}
 	}
 }
@@ -66,10 +66,9 @@ Position SearchBST(BSTree T, KeyType K)
 }
 Position SearchBST1(BSTree T, KeyType K, BSTree f1, BSTree &f)
 /*在T中查找关键字为k的结点,若查找成功,该函数返回该结点的指针,
-f返回其双亲结点;否则,该函数返回NULL。
-其调用方法如下:
-SearchBST(bt,x,NULL,f);
-这里的第3个参数f1仅作中间参数,用于求f,初始设为NULL*/
+  f返回其双亲结点;否则,该函数返回NULL。其调用方法如下:
+  SearchBST(bt,x,NULL,f);
+  这里的第3个参数f1仅作中间参数,用于求f,初始设为NULL*/
 {
 	if (T == NULL)
 	{
@@ -102,23 +101,23 @@ Position DeleteBST(BSTree T, KeyType K)
 	if (T == NULL) //树T为空
 		return T;
 	if (K < T->Key)
-		T->Lchild = DeleteBST(T->Lchild, K);  //递归查找左子树
+		T->Lchild = DeleteBST(T->Lchild, K);   //递归查找左子树
 	else if (K > T->Key)
-		T->Rchild = DeleteBST(T->Rchild, K); //递归查找右子树
+		T->Rchild = DeleteBST(T->Rchild, K);   //递归查找右子树
 	else  //找到节点
 	{
-		if (T->Lchild && T->Rchild)  //有两个孩子
+		if (T->Lchild && T->Rchild)            //有两个孩子
 		{
 			TmpCell = FindMin(T->Rchild);  //查找右子树中最小的节点
 			T->Key = TmpCell->Key;
 			T->Rchild = DeleteBST(T->Rchild, T->Key);
 		}
-		else  //只有一个孩子或没有孩子
+		else                                   //只有一个孩子或没有孩子
 		{
 			TmpCell = T;
-			if (T->Lchild == NULL) //没有左孩子
+			if (T->Lchild == NULL)         //没有左孩子
 				T = T->Rchild;
-			else if (T->Rchild == NULL)  //没有右孩子
+			else if (T->Rchild == NULL)    //没有右孩子
 				T = T->Rchild;
 			free(TmpCell);
 		}
@@ -156,10 +155,10 @@ Position Search2(BSTree T, KeyType K) //非递归查找某一节点
 
 int IsBST(BSTree T)    //判断该树是否为二叉排序树 
 {
-	//静态变量，只执行一次
-	static int  flag = 1;//标记节点是否符合二叉排序树的要求
+	                       //静态变量，只执行一次！！！
+	static int  flag = 1;  //标记节点是否符合二叉排序树的要求
 	static int LastKey = 0;//记录上一节点的关键值
-	//类似中序遍历
+	                       //类似中序遍历！！！
 	if (T->Lchild && flag)
 		IsBST(T->Lchild);
 	if (T->Key < LastKey)
