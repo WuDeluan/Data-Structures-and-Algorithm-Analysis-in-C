@@ -154,6 +154,22 @@ Position Search2(BSTree T, KeyType K) //非递归查找某一节点
 	}
 }
 
+int IsBST(BSTree T)    //判断该树是否为二叉排序树 
+{
+	//静态变量，只执行一次
+	static int  flag = 1;//标记节点是否符合二叉排序树的要求
+	static int LastKey = 0;//记录上一节点的关键值
+	//类似中序遍历
+	if (T->Lchild && flag)
+		IsBST(T->Lchild);
+	if (T->Key < LastKey)
+		flag = 0;
+	LastKey = T->Key;
+	if (T->Rchild && flag)
+		IsBST(T->Rchild);
+	return  flag;
+}
+
 void main()
 {
 	BSTree T;
