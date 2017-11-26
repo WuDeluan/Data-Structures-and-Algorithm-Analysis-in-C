@@ -4,7 +4,7 @@
 typedef char ElemType;
 typedef struct BTNode
 {
-	ElemType Data;			//数据元素
+	ElemType Data;		//数据元素
 	struct BTNode *Lchild;	//指向左孩子结点
 	struct BTNode *Rchild;	//指向右孩子结点
 }*BTree,*Position ;
@@ -14,7 +14,7 @@ void CreateBTree(BTree &T, char *str)
 	Position P = NULL;
 	int Top = -1, k, j = 0;
 	char ch = str[j];
-	T = NULL;				//建立的二叉树初始时为空
+	T = NULL;		//建立的二叉树初始时为空
 	while (ch != '\0')  	//str未扫描完时循环
 	{
 		switch (ch)
@@ -24,9 +24,9 @@ void CreateBTree(BTree &T, char *str)
 		case ',':k = 2; break;                      		//为孩子结点右结点
 		default:P = (BTNode*)malloc(sizeof(BTNode));
 			P->Data = ch; P->Lchild = P->Rchild = NULL;
-			if (T == NULL)                    	 	//*p为二叉树的根结点
+			if (T == NULL)                    	 	//P为二叉树的根结点
 				T = P;
-			else  								//已建立二叉树根结点
+			else  						//已建立二叉树根结点
 			{
 				switch (k)
 				{
@@ -44,15 +44,15 @@ Position FindNode(BTree T, ElemType X) //查找某一节点
 	Position P;
 	if (T == NULL)
 		return NULL;
-	else if (T->Data == X)
+	else if (T->Data == X)   //找到了
 		return T;
 	else
 	{
-		P = FindNode(T->Lchild, X);
+		P = FindNode(T->Lchild, X);           //递归查找左子树
 		if (P != NULL)
-			return P;
+			return P;                     //如果找到，返回节点位置
 		else
-			return FindNode(T->Rchild, X);
+			return FindNode(T->Rchild, X); //递归查找右子树
 	}
 }
 
@@ -73,8 +73,8 @@ int BTreeHeight(BTree T)
 		return 0; 				//空树的高度为0
 	else
 	{
-		LHeight = BTreeHeight(T->Lchild);	//求左子树的高度为lchildh
-		RHeight = BTreeHeight(T->Rchild);	//求右子树的高度为rchildh
+		LHeight = BTreeHeight(T->Lchild);	//求左子树的高度为LHeight
+		RHeight = BTreeHeight(T->Rchild);	//求右子树的高度为RHeight
 		return (LHeight > RHeight) ? (LHeight + 1) : (RHeight + 1);
 	}
 }
@@ -86,11 +86,11 @@ void DispBTree(BTree T)
 		printf("%c", T->Data);
 		if (T->Lchild != NULL || T->Rchild != NULL)
 		{
-			printf("(");						//有孩子结点时才输出(
-			DispBTree(T->Lchild);				//递归处理左子树
+			printf("(");				//有孩子结点时才输出(
+			DispBTree(T->Lchild);			//递归处理左子树
 			if (T->Rchild != NULL) printf(",");	//有右孩子结点时才输出,
-			DispBTree(T->Rchild);				//递归处理右子树
-			printf(")");						//有孩子结点时才输出)
+			DispBTree(T->Rchild);			//递归处理右子树
+			printf(")");				//有孩子结点时才输出)
 		}
 	}
 }
