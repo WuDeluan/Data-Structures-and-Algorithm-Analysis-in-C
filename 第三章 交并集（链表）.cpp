@@ -51,7 +51,7 @@ List Union(List L1, List L2)
 	P2 = L2->Next;
 	while (P1 != NULL && P2 != NULL)
 	{
-		if (P1->Data = P2->Data)
+		if (P1->Data == P2->Data)
 		{
 			Add(L3, P1->Data);
 			P1 = P1->Next;
