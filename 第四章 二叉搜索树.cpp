@@ -85,7 +85,8 @@ Position SearchBST1(BSTree T, KeyType K, BSTree f1, BSTree &f)
 	else 
 		return SearchBST1(T->Rchild, K, T, f);  //在右子树中递归查找
 }
-Position FindMin(BSTree T)
+
+Position FindMin(BSTree T)    //递归实现
 {
 	if (T == NULL)
 		return NULL;
@@ -93,6 +94,14 @@ Position FindMin(BSTree T)
 		return T;
 	else
 		return FindMin(T->Lchild);
+}
+
+Position FindMax(BSTree T)   //非递归实现
+{
+	if (T != NULL)
+		while (T->Rchild != NULL)
+			T = T->Rchild;
+	return T;
 }
 
 Position DeleteBST(BSTree T, KeyType K)
