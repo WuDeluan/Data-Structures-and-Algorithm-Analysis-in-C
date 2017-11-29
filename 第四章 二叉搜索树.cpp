@@ -178,6 +178,20 @@ int IsBST(BSTree T)    //判断该树是否为二叉排序树
 	return  flag;
 }
 
+int Compare(BSTree T, BSTree P)  //比较两棵二叉树是否相同
+{
+	if (T == NULL && P == NULL)
+		return 1;
+	else if (T != NULL && P != NULL)
+	{
+		if (T->Key == P->Key)
+			return Compare(T->Lchild, P->Lchild) && Compare(T->Rchild, P->Rchild);
+		else
+			return 0;
+	}
+	else
+		return 0;
+}
 void main()
 {
 	BSTree T;
