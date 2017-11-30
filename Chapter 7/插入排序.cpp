@@ -1,10 +1,10 @@
 #include <stdio.h>
 
-typedef int ElemenType;
-void InsertionSort(ElemenType A[], int N)
+typedef int ElementType;
+void InsertionSort(ElementType A[], int N)
 {
 	int j, P;
-	ElemenType Tmp;
+	ElementType Tmp;
 	for (P = 1; P < N; P++)
 	{
 		Tmp = A[P];
