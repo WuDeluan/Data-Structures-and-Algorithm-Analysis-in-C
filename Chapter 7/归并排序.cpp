@@ -9,7 +9,7 @@ void Merge(ElementType A[], ElementType TmpArray[], int Lpos, int Rpos, int Righ
 	TmpPos = Lpos;
 	NumElements = RightEnd - Lpos + 1;
 
-	while (Lpos <= LeftEnd && Rpos <= RightEnd)
+	while (Lpos <= LeftEnd && Rpos <= RightEnd)              //main loop
 	{
 		if (A[Lpos] <= A[Rpos])
 			TmpArray[TmpPos++] = A[Lpos++];
@@ -17,12 +17,12 @@ void Merge(ElementType A[], ElementType TmpArray[], int Lpos, int Rpos, int Righ
 			TmpArray[TmpPos++] = A[Rpos++];
 	}
 
-	while (Lpos <= LeftEnd)
+	while (Lpos <= LeftEnd)                                  //Copy rest of first half
 		TmpArray[TmpPos++] = A[Lpos++];
-	while (Rpos <= RightEnd)
+	while (Rpos <= RightEnd)                                 //Copy rest of second half
 		TmpArray[TmpPos++] = A[Rpos++];
 
-	for (i = 0; i < NumElements; i++, RightEnd--)
+	for (i = 0; i < NumElements; i++, RightEnd--)            //Copy TmpArray back
 		A[RightEnd] = TmpArray[RightEnd];
 }
 
@@ -41,7 +41,7 @@ void MSort(ElementType A[], ElementType TmpArray[], int Left, int Right)
 void MergeSort(ElementType A[], int N)
 {
 	ElementType  *TmpArray;
-	TmpArray = (ElementType*)malloc(sizeof(ElementType) * N);
+	TmpArray = (ElementType*)malloc(sizeof(ElementType) * N);  //remenber to plus N,free will wrong if not
 	if (TmpArray != NULL)
 	{
 		MSort(A, TmpArray, 0, N - 1);
