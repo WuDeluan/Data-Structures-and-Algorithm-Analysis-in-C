@@ -29,8 +29,8 @@ int MultPolynomial(Polynomial Poly1, Polynomial Poly2, Polynomial PolyProd)
 	PolyProd->HighPower = Poly1->HighPower + Poly2->HighPower;
 	if (PolyProd->HighPower > MaxDegree)
 		return -1;
-	for (i = 0; i <= Poly2->HighPower; i++)
-		for (j = 0; j < Poly2->HighPower; j++)
+	for (i = 0; i <= Poly1->HighPower; i++)
+		for (j = 0; j <= Poly2->HighPower; j++)
 			PolyProd->CoeffArray[i + j] += Poly1->CoeffArray[i] * Poly2->CoeffArray[j];
 }
 
