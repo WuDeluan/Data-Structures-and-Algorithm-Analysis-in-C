@@ -30,6 +30,39 @@ int Insert(Heap H, ElementType X)
 	H->Elements[i] = X;
 }
 
+int IsEmpty(Heap H)
+{
+	return H->Size == H->Capacity;
+}
+
+ElementType DeleteMin(Heap H)
+{
+	int i, Child;
+	ElementType MinElement, LastElement;
+
+	if (IsEmpty(H))
+		return H->Elements[0];
+
+	MinElement = H->Elements[1];
+	LastElement = H->Elements[H->Size--];
+
+	for (i = 1; i * 2 <= H->Size; i = Child)
+	{
+		Child = i * 2;
+		if (Child != H->Size && H->Elements[Child + 1] < H->Elements[Child])
+			Child++;
+
+
+		if (LastElement > H->Elements[Child])
+			H->Elements[i] = H->Elements[Child];
+		else
+			break;
+	}
+
+	H->Elements[i] = LastElement;
+	return MinElement;
+}
+
 int main()
 {
 	Heap H = Initialize(10);
