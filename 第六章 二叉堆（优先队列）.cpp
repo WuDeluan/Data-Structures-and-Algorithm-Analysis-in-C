@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#define MinData -1
 
 typedef int ElementType;
 typedef struct HeapStruct
@@ -16,6 +17,7 @@ Heap Initialize(int MaxElements)
 	H->Capacity = MaxElements;
 	H->Elements = (ElementType*)malloc(sizeof(ElementType) * MaxElements + 1);
 	H->Size = 0;
+	H->Element[0] = MinData;
 
 	return H;
 }
