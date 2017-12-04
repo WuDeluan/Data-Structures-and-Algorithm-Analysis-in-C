@@ -16,8 +16,5 @@ void ShellSort(ElementType A[], int N)
 					
 					break;
 			A[j] = Tmp;
-			for (k = 0; k < 10; k++)
-				printf("%d ", A[k]);
-			printf("\n");
 		}
 }
