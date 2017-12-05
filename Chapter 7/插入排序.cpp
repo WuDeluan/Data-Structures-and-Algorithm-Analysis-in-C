@@ -13,3 +13,15 @@ void InsertionSort(ElementType A[], int N)
 		A[j] = Tmp;
 	}
 }
+
+/*for(P = 1;P < N;P++)
+{
+	for(j = P;j > 0;j--)
+      {
+	       if(Tmp < A[j - 1])
+		     A[j] = A[j - 1];
+	       else
+		    break;    //!!!
+      }
+       A[j] = Tmp;
+}*/
