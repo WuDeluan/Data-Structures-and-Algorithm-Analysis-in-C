@@ -1,3 +1,7 @@
+/*
+   ①将关键字构造成树。
+   ②下滤形成初始堆。
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #define LeftChild(i)(2 * (i) + 1)
