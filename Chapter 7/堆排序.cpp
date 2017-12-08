@@ -45,3 +45,8 @@ void HeapSort(ElementType A[], int N)
 		PercDown(A, 0, i);       //调整大根堆
 	}
 }
+
+/*
+  时间复杂度：O(NlogN)
+  稳定性：不稳定
+*/
