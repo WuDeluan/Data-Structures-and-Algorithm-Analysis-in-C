@@ -1,7 +1,3 @@
-/*
-  时间复杂度：O(NlogN)
-  稳定性：稳定
-*/
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -92,3 +88,8 @@ void MergeSort_NonRecursive(ElementType A[], int N)
 	}
 	else printf("空间不足");
 }
+
+/*
+  时间复杂度：O(NlogN)
+  稳定性：稳定
+*/
