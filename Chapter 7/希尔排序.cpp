@@ -84,3 +84,9 @@ void ShellSort2(ElementType A[], int N)
 		}
 	}
 }
+
+
+/*
+  时间复杂度：O(N^d),视增量的选择而定
+  稳定性：不稳定
+*/
