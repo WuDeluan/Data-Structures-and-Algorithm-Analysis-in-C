@@ -1,6 +1,8 @@
 #include <stdio.h>
 
 typedef int ElementType;
+
+//原始希尔排序
 void ShellSort(ElementType A[], int N)
 {
 	int i, j, k,Increment;
@@ -18,3 +20,6 @@ void ShellSort(ElementType A[], int N)
 			A[j] = Tmp;
 		}
 }
+
+/*Hibbard增量序列
+![](http://latex.codecogs.com/gif.latex?\\D^{k} = 2^{k} - 1
