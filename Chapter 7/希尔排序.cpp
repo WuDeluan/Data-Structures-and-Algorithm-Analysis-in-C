@@ -22,4 +22,4 @@ void ShellSort(ElementType A[], int N)
 }
 
 //Hibbard增量序列
-![](http://latex.codecogs.com/gif.latex?\\D^{k} = 2^{k} - 1)
+![](http://latex.codecogs.com/gif.latex?\\D^{k}=2^{k}-1)
