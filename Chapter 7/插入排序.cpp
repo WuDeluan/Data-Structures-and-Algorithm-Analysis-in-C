@@ -1,8 +1,3 @@
-/*
-  最好情况：O(N)
-  最差情况：O（N2）
-  稳定性：稳定
-*/
 #include <stdio.h>
 
 typedef int ElementType;
@@ -18,3 +13,8 @@ void InsertionSort(ElementType A[], int N)
 		A[j] = Tmp;
 	}
 }
+/*
+  最好情况：O(N)
+  最差情况：O（N2）
+  稳定性：稳定
+*/
