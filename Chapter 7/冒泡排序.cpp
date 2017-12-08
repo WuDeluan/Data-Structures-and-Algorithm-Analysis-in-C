@@ -1,3 +1,8 @@
+/*
+  最好情况：顺序O(N);
+  最坏情况：逆序O(N2);
+  稳定性：稳定；
+*/
 #include <stdio.h>
 
 typedef int ElementType;
@@ -17,9 +22,3 @@ void BubbleSort(ElementType A[], int N)
 		}
 	}
 }
-
-/*
-  最好情况：顺序O(N);
-  最坏情况：逆序O(N2);
-  稳定性：稳定；
-*/
