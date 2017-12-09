@@ -36,7 +36,7 @@ int NextPrime(int N)
 	return p;
 }
 
-HashTable CreateTable(int TableSize)
+HashTable InitializtTable(int TableSize)
 {
 	HashTable H;
 	int i;
