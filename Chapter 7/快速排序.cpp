@@ -1,10 +1,9 @@
-/*
-①选择基准(使A[Left] < R[Center] < A[Right]，交换A[Center],A[Right-1]。
-② 令 i 从 Right-1 开始向前，j 从0开始向后。
-③当 i 遇到比基准小的，停下，当 j 遇到比基准大的，停下。
-④当 i，j 都停下时，交换指向的元素。
-⑤当 i > j，退出循环，将基准与 i 指向的元素交换。
-*/
+/*①选择基准(使A[Left] < R[Center] < A[Right]，交换A[Center],A[Right-1]。
+  ②令 i 从 0 开始向后，j 从 Right - 1 开始向前。
+  ③当 A[i] 大于等于基准时，停下，当 A[j] 小于等于基准时，停下。
+  ④当 i，j 都停下时，交换指向的元素。
+  ⑤当 i > j，退出循环，将基准与 i 指向的元素交换。*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #define Cutoff 3
@@ -60,8 +59,8 @@ void QSort(ElementType A[], int Left, int Right)
 		j = Right - 1;
 		for (; ;)               //将序列中比基准小的移到基准左边，大的移到右边
 		{
-			while (A[++i] < Pivot) {}
-			while (A[--j] > Pivot) {}
+			while (A[++i] < Pivot) {}   //大于等于基准时退出循环
+			while (A[--j] > Pivot) {}   //小于等于基准时退出循环
 			if (i < j)
 				Swap(&A[i], &A[j]);
 			else
