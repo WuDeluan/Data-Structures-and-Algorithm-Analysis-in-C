@@ -6,10 +6,10 @@ typedef int ElementType;    // 关键词类型用整型
 typedef int Index;          // 散列地址类型 
 typedef Index Position;     // 数据所在位置与散列地址是同一类型 
 
-							// 散列单元状态类型，分别对应：有合法元素、空单元、有已删除元素
+// 散列单元状态类型，分别对应：有合法元素、空单元、有已删除元素
 typedef enum { Legitimate, Empty, Deleted } EntryType;   //注意这里使用逗号！！！
 
-														 // 散列表单元类型
+ // 散列表单元类型
 typedef struct HashEntry {
 	ElementType Data; // 存放元素 
 	EntryType Info;   // 单元状态 
@@ -64,7 +64,7 @@ Position Find(HashTable H, ElementType Key)
 	int CNum = 0;          // 记录冲突次数
 
 	NewPos = CurrentPos = Hash(Key, H->TableSize); // 初始散列位置 
-												   // 当该位置的单元非空，并且不是要找的元素时，发生冲突
+	// 当该位置的单元非空，并且不是要找的元素时，发生冲突
 	while (H->TheCells[NewPos].Info != Empty && H->TheCells[NewPos].Data != Key) {
 		// 字符串类型的关键词需要 strcmp 函数!!
 		// 统计1次冲突，并判断奇偶次 
@@ -107,9 +107,11 @@ HashTable ReHash(HashTable H)
 
 	OldCells = H->TheCells;
 	OldSize = H->TableSize;
-
+       
+       //创建一个新的空表
 	H = InitializtTable(2 * OldSize);
-
+        
+	//扫描整个旧表，将数据重新插入新表中
 	for (i = 0; i < OldSize; i++)
 		if (OldCells[i].Info == Legitimate)
 			Insert(H,OldCells[i].Data);
