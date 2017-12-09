@@ -5,7 +5,7 @@
 #define KEYLENGTH 15                     // 关键词字符串的最大长度
 typedef char ElementType[KEYLENGTH + 1]; // 关键词类型用字符串
 #define MAXTABLESIZE 100000              // 允许开辟的最大散列表长度 
-typedef int Index;                      // 散列地址类型
+typedef int Index;                       // 散列地址类型
 
 // 定义单链表
 typedef struct Node {
@@ -15,8 +15,8 @@ typedef struct Node {
 
 // 散列表类型 
 typedef struct TableNode {   // 散列表结点定义
-	int TableSize; // 表的最大长度
-	List Heads;    // 指向链表头结点的数组
+	int TableSize;       // 表的最大长度
+	List Heads;          // 指向链表头结点的数组
 } *HashTable;
 
 // 返回大于N且不超过MAXTABLESIZE的最小素数
@@ -66,8 +66,8 @@ Position Find(HashTable H, ElementType Key)
 	Index Pos;
 
 	Pos = Hash(Key, H->TableSize); // 初始散列位置 
-	P = H->Heads[Pos].Next; // 从该链表的第1个结点开始
-							//  当未到表尾，并且Key未找到时
+	P = H->Heads[Pos].Next;        // 从该链表的第1个结点开始
+	//  当未到表尾，并且Key未找到时
 	while (P && strcmp(P->Data, Key))
 		P = P->Next;
 
@@ -84,7 +84,7 @@ bool Insert(HashTable H, ElementType Key)
 		NewCell = (Position)malloc(sizeof(Node));
 		strcpy(NewCell->Data, Key);
 		Pos = Hash(Key, H->TableSize); // 初始散列位置
-									   // 将NewCell插入为H->Heads[Pos]链表的第1个结点 
+		// 将NewCell插入为H->Heads[Pos]链表的第1个结点 
 		NewCell->Next = H->Heads[Pos].Next;
 		H->Heads[Pos].Next = NewCell;
 		return true;
