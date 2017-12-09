@@ -18,8 +18,8 @@ typedef struct HashEntry {
 
 // 散列表类型
 typedef struct TableNode {   // 散列表结点定义 
-	int TableSize;         // 表的最大长度 
-	Cell *TheCells;           // 存放散列单元数据的数组 
+	int TableSize;       // 表的最大长度 
+	Cell *TheCells;      // 存放散列单元数据的数组 
 }*HashTable;                
 
 // 返回大于N且不超过MAXTABLESIZE的最小素数
@@ -29,7 +29,7 @@ int NextPrime(int N)
 
 	while (p <= MAXTABLESIZE) {
 		for (i = (int)sqrt(p); i>2; i--)
-			if (!(p%i)) break;      // p不是素数
+			if (!(p%i)) break;  // p不是素数
 		if (i == 2) break;          // for正常结束，说明p是素数 
 		else  p += 2;               // 否则试探下一个奇数
 	}
@@ -78,7 +78,7 @@ Position Find(HashTable H, ElementType Key)
 		else {    // 偶数次冲突
 			NewPos = CurrentPos - CNum * CNum / 4; // 增量为-(CNum/2)^2
 			while (NewPos < 0)
-				NewPos += H->TableSize;    // 调整为合法地址 
+				NewPos += H->TableSize;        // 调整为合法地址 
 		}
 	}
 	return NewPos; // 此时NewPos或者是Key的位置，或者是一个空单元的位置（表示找不到）
