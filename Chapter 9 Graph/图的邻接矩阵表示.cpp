@@ -26,6 +26,7 @@ typedef struct GNode
 //初始化一个图
 MGraph CreateGraph(int VertexNum)
 {
+	//初始化一个有VertexNum个结点但没有边的图
 	Vertex V, W;
 	MGraph Graph;
 
@@ -33,7 +34,7 @@ MGraph CreateGraph(int VertexNum)
 	Graph->Nv = VertexNum;
 	Graph->Ne = 0;
 
-	//初始化邻接矩阵
+	//初始化邻接矩阵,将权重置为∞
 	for (V = 0; V < Graph->Nv; V++)
 		for (W = 0; W < Graph->Nv; W++)
 			Graph->Weight[V][W] = INFINITY;
@@ -45,6 +46,7 @@ MGraph CreateGraph(int VertexNum)
 void InsertEdge(MGraph Graph,Edge E)
 {
 	Graph->Weight[E->V1][E->V2] = E->Weight; 
+	//如果是无向图
 	Graph->Weight[E->V2][E->V1] = E->Weight;
 }
 
@@ -57,7 +59,7 @@ MGraph BuildGraph()
 	int Nv, i;
 
 	scanf("%d", &Nv);      //读入顶点个数
-	Graph = CreateGraph(Nv);  //初始化图
+	Graph = CreateGraph(Nv);  //初始化一个有VertexNum个结点但没有边的图
 
 	scanf("%d", &(Graph->Ne));  //读入边数
 	if (Graph->Ne != 0)         //如果有边
@@ -70,7 +72,8 @@ MGraph BuildGraph()
 			InsertEdge(Graph, E);   //插入边
 		}
 	}
-
+        
+	 //如果结点本身需要存储数据
 	for (V = 0; V < Graph->Nv; V++)
 		scanf("%c", &Graph->Data[V]);
 
