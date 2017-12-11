@@ -79,3 +79,19 @@ MGraph BuildGraph()
 
 	return Graph;
 }
+
+//测试函数
+int main()
+{
+	MGraph Graph = BuildGraph();
+	Vertex V, W;
+	for (V = 0; V < Graph->Nv; V++)
+	{
+		for (W = 0; W < Graph->Nv; W++)
+		{
+			printf("%d\t", Graph->Weight[V][W]);
+		}
+		printf("\n");
+	}
+	return 0;
+}
