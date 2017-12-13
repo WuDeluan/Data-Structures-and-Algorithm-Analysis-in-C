@@ -87,7 +87,7 @@ LGraph CreateGraph(int VertexNum)
 	Graph->Ne = 0;
 
 	//初始化邻接表表头
-	for (V = 0; V < Graph->Nv; V++)
+	for (V = 0; V <= Graph->Nv; V++)    //注意等号
 		Graph->G[V].FirstEdge = NULL;
 
 	return Graph;
@@ -159,20 +159,20 @@ void Unweighted(Table *T, LGraph Graph, Vertex S)
 	InitQueue(Q);
 	Vertex V;
 
-	Enqueue(Q, S);
+	Enqueue(Q, S);   //将初始点S入队
 
-	while (Q->Front != Q->Rear)
+	while (Q->Front != Q->Rear)    //队列非空
 	{
-		V = Dequeue(Q);
-		T[V].Known = 1;
+		V = Dequeue(Q);        //将一个结点出队
+		T[V].Known = 1;        //标记该结点
 
 		PtrToAdjVNode W;
+		//遍历当前结点的所有邻接点
 		for (W = Graph->G[V].FirstEdge; W; W = W->Next)
 		{
 			if (T[W->AdjV].Distence == INFINITY)
 			{
 				T[W->AdjV].Distence = T[V].Distence + 1;
-				T[W->AdjV].Known = 1;
 				T[W->AdjV].Path = V;
 				Enqueue(Q, W->AdjV);
 			}
@@ -180,6 +180,7 @@ void Unweighted(Table *T, LGraph Graph, Vertex S)
 	}
 }
 
+//测试函数
 int main()
 {
 	LGraph Graph = BuildGraph();
