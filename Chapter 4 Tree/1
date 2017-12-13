@@ -1,0 +1,86 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct HTNode
+{
+	int weight;
+	int parent,lchild,rchild;
+}*HuffmanTree,*PtrToNode;
+
+void select(HuffmanTree *HT,int i,int &s1,int &s2)
+{
+	int j,k = 0,p,t;
+	int a[100];
+	for(j = 1;j < i;j++)
+	{
+		if((*HT)[j].parent == 0)
+			a[k++] = (*HT)[j].weight;
+	}
+	for(j = 0;j < k;j++)
+	{
+		for(p = 0;p < k - 1 - j;p++)
+		{
+			if(a[k] > a[k + 1])
+			{
+				t = a[k];
+				a[k] = a[k +1];
+				a[k + 1] = t;
+			}
+		}
+	}
+	s1 = a[0];
+	s2 = a[1];
+
+}
+
+typedef char HuffmanCode;
+void HuffmanCoding(HuffmanTree *HT,HuffmanCode *HC,int *w,int n)
+{
+	if(n <= 1) return;
+	int m = 2*n-1;
+	*HT = (HuffmanTree)malloc((m+1)*sizeof(HTNode));
+	PtrToNode p;
+	int i,s1,s2;
+	for(p = *HT + 1,i = 1;i <= n;++i,++p,++w)
+	{
+		(*p).weight = *w;
+		(*p).parent = (*p).lchild = (*p).rchild = 0;
+	}
+	for(;i <= m;++i,++p) (*p).parent = 0;
+	for(i = n + 1;i <= m;++i)
+	{
+		select(HT,i - 1,s1,s2);
+		(*HT)[s1].parent = (*HT)[s2].parent = i;
+		(*HT)[i].lchild = s1;
+		(*HT)[i].rchild = s2;
+		(*HT)[i].weight = (*HT)[s1].weight + (*HT)[s2].weight;
+	}
+	*HC = (HuffmanCode)malloc(n*sizeof(char));
+	char *cd = (char*)malloc(sizeof(char)*n);
+	cd[n-1] = '\0';
+	for(i = 1;i <= n;i++)
+	{
+		int start = n-1,c,f;
+		for(c = i,f = (*HT)[i].parent;f != 0;c = f,f = (*HT)[f].parent)
+		{
+			if((*HT)[f].lchild == c) cd[--start] = '0';
+			else
+			cd[--start] = '1';
+		}
+		(*HC)[i] = (char*)malloc(sizeof(char)*(n-start));
+			strcpy((*HC)[i],&cd[start]);
+	}
+	free(cd);
+}
+
+int main()
+{
+	int n,w[105],i;
+	scanf("%d",&n);
+	for(i = 0;i < n;i++)
+	scanf("%d",&w[i]);
+	HuffmanTree T = (HuffmanTree)malloc(sizeof(HTNode));
+	HuffmanCode C = (HuffmanCode)malloc(sizeof(char)*i)
+	HuffmanCoding(w,i);
+}
