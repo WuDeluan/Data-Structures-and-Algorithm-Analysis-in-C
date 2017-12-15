@@ -1,3 +1,26 @@
+/*伪码描述：
+void Dijkstra(Graph G,Table T)
+{
+     Vertex V,W;
+     
+     for(; ;)
+     {
+         V = smallst unknown distance vertex;
+	 if(V == NotAVertex)
+	    break;
+	  T[V].konwn = ture;
+	  for each W adjancent to V;
+	  if(!T[W}.konwn)
+	     if(T[V].dis + Cvw < T[W].dis)
+	     {
+	        Decrease(T[W].dis to T[V}.dis + Cvw);
+		T[W].path = V;
+	      }
+        }
+}
+*/
+	 
+
 #include <stdio.h>
 #include <stdlib.h>
 
