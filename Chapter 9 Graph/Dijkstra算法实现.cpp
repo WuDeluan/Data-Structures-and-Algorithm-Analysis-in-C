@@ -219,7 +219,7 @@ int main()
 	for (V = 1; V <= Graph->Nv; V++)
 	{
 		printf("The distence of V%d is %d,and the path is ", V,T[V].Distence);
-		PrintPath(V, T);7 12
+		PrintPath(V, T);
 		printf("\n");
 	}
 	
