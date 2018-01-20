@@ -69,7 +69,7 @@ int FindHash(Hash H, int Key)
 int DeleteHash(Hash H, int Key)
 {
 	int Index = FindHash(H, Key);
-	if (Index == 0)
+	if (Index != -1)
 		H->TheCells[Index].Info = DELETE;
 	else
 		return -1;
