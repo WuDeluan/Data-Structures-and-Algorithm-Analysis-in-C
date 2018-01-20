@@ -34,7 +34,7 @@ int Insert(Heap H, ElementType X)
 
 int IsEmpty(Heap H)
 {
-	return H->Size == H->Capacity;
+	return H->Size == 0;
 }
 
 ElementType DeleteMin(Heap H)
