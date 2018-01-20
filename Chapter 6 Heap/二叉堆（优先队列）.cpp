@@ -17,7 +17,7 @@ Heap Initialize(int MaxElements)
 	H->Capacity = MaxElements;
 	H->Elements = (ElementType*)malloc(sizeof(ElementType) * MaxElements + 1);
 	H->Size = 0;
-	H->Element[0] = MinData;
+	H->Elements[0] = MinData;
 
 	return H;
 }
