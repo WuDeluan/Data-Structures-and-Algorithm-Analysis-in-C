@@ -53,7 +53,7 @@ int IsBST(BST T)
        flag = 0;
     LastKey = Key;
     if(T->Right && Flag)
-       IsBST(T):
+       IsBST(T->Right):
     return flag;
 }
 
